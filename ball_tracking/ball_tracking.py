@@ -125,7 +125,7 @@ while True:
  
     # update the points queue
     pts.appendleft(center)
-    # print(center)
+    # print(center)  # For debugging
 
     # loop over the set of tracked points
     for i in range(1, len(pts)):
