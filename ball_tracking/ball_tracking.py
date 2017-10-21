@@ -117,7 +117,8 @@ class MaskBallTracker(object):
                     if not focalLength:
                         init_focal_length = input("Initialize Focal Length Calibration? (y or n): ")
                         if init_focal_length == "y":
-                            # KNOWN_DISTANCE = float(input("Distance from Camera?: "))
+                            # KNOWN_DISTANCE = float(input("Please enter Ball's Distance from Camera: "))
+                            # KNOWN_WIDTH = float(input("Please enter Ball radius: "))
                             focalLength = (radius * KNOWN_DISTANCE) / KNOWN_WIDTH
                         # print(focalLength)
                         # plt.imshow(frame)
