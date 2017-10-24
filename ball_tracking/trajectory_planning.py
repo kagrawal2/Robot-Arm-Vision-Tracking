@@ -8,10 +8,20 @@ path = tracker.get_path()  # Would normally be path so far when we subscribe to 
 
 # https://people.physics.tamu.edu/mahapatra/teaching/ch3.pdf
 
+
+"""
+Our ROS node will create a Parabolic Trajectory Planner object.
+"""
+
+
+
 class ParabolicTrajectoryPlanner(object):
 
     def __init__(self):
-        pass
+        self.trajectory = []  # List of (x, y, z) tuples for the current locations
+
+    def add_to_trajectory(self, current_location):
+        self.trajectory.append(current_location)
 
     def predict(self, timesteps, trajectory):  # predict location of the object based on the trajectory so far after t timesteps.
 
@@ -40,7 +50,6 @@ class ParabolicTrajectoryPlanner(object):
 
                 For all of these methods, must determine how to use all the x, y, z values and not just the most recent one.
                 """
+        # return predicted_location
 
-
-
-ParabolicTrajectoryPlanner(path)
+return ParabolicTrajectoryPlanner(path)
