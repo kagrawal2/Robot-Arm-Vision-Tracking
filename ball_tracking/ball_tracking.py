@@ -129,19 +129,26 @@ class MaskBallTracker(object):
                             start_path_track = True
 
                     if focalLength and start_path_track:
-                        dist = distance_to_camera(KNOWN_WIDTH, focalLength, radius)
-                        distances.appendleft(int(dist))
-                        # print(dist)
-                        cv2.putText(frame, "{} inches".format(int(dist)), (int(x), int(y)), 
+                        Z = distance_to_camera(KNOWN_WIDTH, focalLength, radius)
+                        distances.appendleft(int(Z))
+
+                        # http://www.cse.psu.edu/~rtc12/CSE486/lecture12.pdf
+                        cam_image_x = int(frame.shape[1] - center[0])  # width - x
+                        cam_image_y = int(frame.shape[0] - center[1])  # height - y
+
+                        X = (cam_image_x * KNOWN_DISTANCE) / float(focalLength)
+                        Y = (cam_image_y * KNOWN_DISTANCE) / float(focalLength)
+
+                        cv2.putText(frame, "({}, {}, {})".format(int(X), int(Y), int(Z)), (int(x), int(y)), 
                             cv2.FONT_HERSHEY_SIMPLEX, 1.0, (255, 255, 255), 1)
          
                         # update the points queue
                         pts.appendleft(center)
                         # update the trajectory array to be used for planning estimation testing
                         # Cast the height for the y coordinate to be in the positive x-y frame
-                        if center and dist:
-                            robot_frame_coord = (center[0], int(frame.shape[0] - center[1]), dist)
-                            self.path.append(robot_frame_coord)
+                        if X and Y and Z:
+                            cam_frame_coord = (X, Y, Z)
+                            self.path.append(cam_frame_coord)
                         # print(center)  # For debugging
 
             # loop over the set of tracked points

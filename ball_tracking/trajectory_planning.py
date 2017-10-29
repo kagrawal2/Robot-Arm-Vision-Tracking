@@ -52,4 +52,4 @@ class ParabolicTrajectoryPlanner(object):
                 """
         # return predicted_location
 
-return ParabolicTrajectoryPlanner(path)
+# ParabolicTrajectoryPlanner(path)
