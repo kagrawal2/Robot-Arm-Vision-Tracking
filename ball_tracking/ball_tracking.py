@@ -20,6 +20,10 @@ class MaskBallTracker(object):
         # (HSV)
         YELLOW_MIN = (8, 50, 50)
         YELLOW_MAX = (45, 255, 255)
+        # Tennis Ball (HSV)
+        TENNIS_NEON_MIN = (30, 255, 135)
+        TENNIS_NEON_MAX = (40, 255, 185)
+
 
         # initialize the known distance from the camera to the object, which
         # in this case is 8 inches
@@ -176,3 +180,5 @@ class MaskBallTracker(object):
 
     def get_path(self):
         return self.path
+
+tracker = MaskBallTracker()
