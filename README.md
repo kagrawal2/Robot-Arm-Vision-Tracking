@@ -11,6 +11,8 @@ Ball Tracker Vision ROS Package for Kinect2 sensor to track a ball in 3D space. 
 * OpenKinect/freenect2
 * iai_kinect/kinect2_bridge
 
+***
+
 ### Run
 (In separate terminal windows)
 
