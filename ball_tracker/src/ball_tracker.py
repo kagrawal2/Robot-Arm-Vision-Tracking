@@ -36,6 +36,8 @@ class MaskBallTracker(object):
 
         self.start_path_tracking = True
         self.cv_bridge = CvBridge()
+        self.br = tf.TransformBroadcaster()
+        self.transform_rotation = tf.transformations.quaternion_from_euler(0, 0, 0)
 
 
     def track_ball_rgb_uv(self, image):
@@ -129,15 +131,12 @@ class MaskBallTracker(object):
                 return None, None, None
             return cam_x, cam_y, cam_z
 
-    @staticmethod
-    def publish_ball(x, y, z, ts):
+    def publish_ball(self, x, y, z, ts):
         # May be used to just publish, X, Y, Z, timestamp geometry msg to a topic
         pass
 
-    @staticmethod
-    def tf_broadcast(x, y, z, ts):
-        br = tf.TransformBroadcaster()
-        br.sendTransform((x, y, z), tf.transformations.quaternion_from_euler(0, 0, 0), ts, "ball", "world")
+    def tf_broadcast(self, x, y, z, ts):
+        self.br.sendTransform((x, y, z), self.transform_rotation, ts, "ball", "kinect2_rgb_optical_frame")
 
     @staticmethod
     def show_cv2_image(img):
@@ -147,7 +146,9 @@ class MaskBallTracker(object):
                 break
 
 
-# Main function used to track ball
+
+
+# Main function used to track ball (ROS Node)
 def track_ball():
 
     BallTracker = MaskBallTracker()
