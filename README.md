@@ -25,7 +25,7 @@ Ball Tracker Vision ROS Package for Kinect2 sensor to track a ball in 3D space. 
 * rosrun rqt_tf_tree rqt_tf_tree
 * rosrun rviz rviz
     * add tf (ball)
-    * add pointcloud2 (kinect2)
+    * add pointcloud2 (kinect2_rgb(or ir)_optical_frame)
 
 ---
 
