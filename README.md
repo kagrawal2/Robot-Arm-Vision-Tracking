@@ -11,7 +11,7 @@ Ball Tracker Vision ROS Package for Kinect2 sensor to track a ball in 3D space. 
 * OpenKinect/freenect2
 * iai_kinect/kinect2_bridge
 
-***
+---
 
 ### Run
 (In separate terminal windows)
@@ -26,6 +26,8 @@ Ball Tracker Vision ROS Package for Kinect2 sensor to track a ball in 3D space. 
 * rosrun rviz rviz
     * add tf (ball)
     * add pointcloud2 (kinect2)
+
+---
 
 #### Features to note for Similar Projects:
 * Read from Point Cloud 2 via pc2.read_points() function
