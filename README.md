@@ -25,7 +25,7 @@ Ball Tracker Vision ROS Package for Kinect2 sensor to track a ball in 3D space. 
     * add tf (ball)
     * add pointcloud2 (kinect2)
 
-#### Feature to note for Similar Projects:
+#### Features to note for Similar Projects:
 * Read from Point Cloud 2 via pc2.read_points() function
 * Use message_filters.TimeSynchronizer() to synch different times at same frequency via ROS message_filters.
 * Broadcast TF and create TF listener
